@@ -5,7 +5,7 @@ import { AddStoreComponent } from './components/add-store/add-store.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
-    { path: '/addStore', component: AddStoreComponent },
+    { path: 'addStore', component: AddStoreComponent },
   ];
 
 @NgModule({
