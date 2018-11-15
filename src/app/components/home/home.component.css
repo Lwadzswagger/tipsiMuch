@@ -2,21 +2,19 @@
     background-image:linear-gradient(to right,violet, #e90e95);
     }
 
-.wrap{
-    width: 1000px;
+.wrapper{
+    width: 350px;
     margin: auto;
     margin-top: 100px;
 }
 .img{
-    vertical-align: middle;
-    border-style: none;
-    height: 150px;
-    width: 150px;
+    height: auto;
+    width: 100px;
 }
-.card{
+.card-1{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
     transition: 0.4s;
-    width: 300px;
+    width: 350px;
     background: #fff;
     text-align: center;
     font-size: 16px;
@@ -24,6 +22,30 @@
     float: left;
     margin: 10px;
 }
+.card-2{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+    transition: 0.4s;
+    width: 350px;
+    background: #fff;
+    text-align: center;
+    font-size: 16px;
+    font-family: sans-serif;
+    float: left;
+    margin: 10px;
+}
+.card-3{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+    transition: 0.4s;
+    width: 350px;
+    background: #fff;
+    text-align: center;
+    font-size: 16px;
+    font-family: sans-serif;
+    float: left;
+    margin: 10px;
+}
+
+
 .card:hover{
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
 }
