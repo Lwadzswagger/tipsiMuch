@@ -1,9 +1,59 @@
 import { Injectable } from '@angular/core';
+import {
+  AngularFirestoreDocument,
+  AngularFirestore,
+  AngularFirestoreCollection
+} from "angularfire2/firestore";
+import { Store } from '../models/stores.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AddStoreService {
 
-  constructor() { }
+  store: Store;
+  storeCollectionRef = this.afs.collection("stores");
+
+  step = 1;
+
+  constructor(
+    private afs: AngularFirestore, ) {
+    this.store = {
+      contact: {
+        name: '',
+        position: '',
+        cellNumber: '',
+      },
+
+      floorSetting: {
+        capacity: '',
+        seatsType: ''
+      },
+      location: '',
+      makeReservations: false,
+      storeProfile: {
+        name: '',
+        cellNumber: '',
+        avatarUrl: 'https://c1.staticflickr.com/8/7459/11536816066_d1acaf5579_b.jpg',
+      }
+      , tradingHours: ""
+      , establishmentType: ""
+      , slogan: ""
+      , reviewsRatings: null
+    }
+
+  }
+
+  registerStore(store: Store) {
+    this.store = store;
+    this.storeCollectionRef
+      .doc(this.store.storeProfile.name)
+      .set(Object.assign({}, this.store))
+      .then(function (docRef) {
+        console.log("store registered!");
+      })
+      .catch(function (error) {
+        console.error("Error adding store: ", error);
+      });
+  }
 }
