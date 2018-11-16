@@ -1,0 +1,49 @@
+
+<div class="md-form mb-5 ">
+   
+  <label data-error="wrong" data-success="right" for="form34">
+    <i class="fa fa-warehouse prefix grey-text"></i> Store name</label>
+  <input type="text" id="form34" [(ngModel)]="storeProfileName" class="form-control validate">
+</div>
+
+
+  <div class="col-md-10">
+      <input class="image-input form-control" (change)="profileDetect($event)" id="Store-picture" type="file">
+
+      <div class="button-cover display-flex">
+        <i class="margin-auto fa fa-plus-circle"></i>
+      </div>
+
+      <div [style.opacity]="storePicUrl!==undefined ? '1' : '0'" class="image-preview">
+        <img src="{{storePicUrl}}" alt="image preview...">
+      </div >
+
+<div *ngIf="storePicture">
+<progress class="progress is-success" min=1 max=100 value="{{ storePicture?.progress }}"></progress>
+<p>{{storePicture?.name}} | {{storePicture?.progress | number}}% Complete</p>
+</div>
+</div>
+
+
+<div class="md-form mb-5 mt-3">
+  
+  <label data-error="wrong" data-success="right" for="form29">
+    <i class="fa fa-pencil prefix grey-text"></i> Store Slogan</label>
+  <input type="email" id="form29" [(ngModel)]="slogan" class="form-control validate">
+</div>
+
+<div class="md-form mb-5">
+  
+  <label data-error="wrong" data-success="right" for="form32">
+    <i class="fa fa-wrench prefix grey-text"></i> Establishment Type</label>
+  <input type="text" id="form32"  [(ngModel)]="establishmentType" class="form-control validate">
+</div>
+
+<div class="md-form">
+ 
+  <label data-error="wrong" data-success="right" for="form8">
+    <i class="fa fa-map-marker prefix grey-text"></i> Store Location</label>
+  <input type="text" id="form8" [(ngModel)]="location" class="md-textarea form-control">
+</div>
+
+<div class="md-form"><div class="btn next" (click)="stepOne()">Next <i class="fa fa-arrow-right prefix grey-text"></i></div></div>
