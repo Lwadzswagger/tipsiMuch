@@ -43,7 +43,8 @@
  
   <label data-error="wrong" data-success="right" for="form8">
     <i class="fa fa-map-marker prefix grey-text"></i> Store Location</label>
-  <input type="text" id="form8" [(ngModel)]="location" class="md-textarea form-control">
+  <input id="address" type="text" [(ngModel)]="location"  class="form-control"
+  placeholder="1234 South Africa +27">
 </div>
 
 <div class="md-form"><div class="btn next" (click)="stepOne()">Next <i class="fa fa-arrow-right prefix grey-text"></i></div></div>

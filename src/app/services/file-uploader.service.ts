@@ -5,6 +5,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase'
 // import { AuthService } from './auth-service.service';
 import { Observable } from 'rxjs';
+import { AddStoreService } from './add-store.service';
 
 
 @Injectable({
@@ -14,6 +15,8 @@ export class FileUploaderService {
 
   constructor(
     private af: AngularFireModule, 
+    private addstoreService: AddStoreService, 
+
      ) { }
 
   private  uploads: Observable<UploadFiles[]>;
@@ -37,14 +40,13 @@ export class FileUploaderService {
         //upload success
          if (uploadTask.snapshot.ref.getDownloadURL()){
          uploadTask.snapshot.ref.getDownloadURL().then((url)=>{
-      console.log('got a link here people', url);
-      
+           this.addstoreService.store.storeProfile.avatarUrl = url ;      
         });
         upload.name = upload.file.name;
 
         // this.saveFileData(upload, `${basepath}/${storeName}`);
-        console.log('download url for pic ',upload.url);
-        console.log('file name',upload.name);
+        // console.log('download url for pic ',upload.url);
+        // console.log('file name',upload.name);
         
         console.log('File uploaded');
         return;

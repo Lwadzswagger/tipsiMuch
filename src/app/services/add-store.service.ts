@@ -4,7 +4,7 @@ import {
   AngularFirestore,
   AngularFirestoreCollection
 } from "angularfire2/firestore";
-import { Store } from '../models/stores.model';
+import { Store, Setup } from '../models/stores.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,24 +22,21 @@ export class AddStoreService {
       contact: {
         name: '',
         position: '',
-        cellNumber: '',
       },
-
-      floorSetting: {
-        capacity: '',
-        seatsType: ''
-      },
+      floorSetting: new Array<Setup>(),
       location: '',
-      makeReservations: false,
+      makeReservations: true,
       storeProfile: {
         name: '',
         cellNumber: '',
         avatarUrl: 'https://c1.staticflickr.com/8/7459/11536816066_d1acaf5579_b.jpg',
       }
-      , tradingHours: ""
-      , establishmentType: ""
-      , slogan: ""
-      , reviewsRatings: null
+      // , tradingHours: ""
+      , establishmentType: ''
+      , slogan: ''
+      , storeOwner: ''
+      , employees: new Array()
+      , reviewsRatings: new Array()
     }
 
   }

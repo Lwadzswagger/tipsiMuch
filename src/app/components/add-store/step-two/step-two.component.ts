@@ -4,35 +4,59 @@ import { AddStoreService } from 'src/app/services/add-store.service';
 @Component({
   selector: 'app-step-two',
   templateUrl: './step-two.component.html',
-  styleUrls: ['./step-two.component.css']
+  styleUrls: ['./step-two.component.css', '../add-store.component.css']
 })
 export class StepTwoComponent implements OnInit {
 
-  
-storeProfileCellNumber = "";
-contactName = ""
-contactPosition = ""
-tradingHours  = "";
 
-makeReservations = false;
-  contactCellNumber = ""
-  floorSettingCapacity = "";
-  floorSettingSeatsType = "";
-  reviewsRatings  = null;
+  storeProfileCellNumber = "";
+  contactName = ""
+  contactPosition = ""
+  // tradingHours  = "";
+  capacity: 1
+    seatsType: ''
 
-   
-  constructor( private addStore:AddStoreService,) { }
+  makeReservations ;
+  // contactCellNumber = ""
+ floor=[];
+  floorSet = {
+    capacity: 1,
+    seatsType: ''
+  }
+  reviewsRatings = null;
+
+
+  constructor(private addStore: AddStoreService, ) { }
 
   ngOnInit() {
   }
 
-  next(){
-    this.addStore.store.contact.cellNumber = this.storeProfileCellNumber;
+  done() {
     this.addStore.store.contact.position = this.contactPosition;
-    this.addStore.store.contact.name = this.contactPosition;
-    this.addStore.store.tradingHours = this.tradingHours;
+    this.addStore.store.storeProfile.cellNumber = this.storeProfileCellNumber;
+    this.addStore.store.contact.name = this.contactName;
+    console.log(this.addStore.store);
+    
+
   }
-  back(){
-    this.addStore.step--;
+  addSet() {
+    this.floorSet.capacity= this.capacity
+    this.floorSet.seatsType= this.seatsType
+    console.log(this.floorSet);    
+    this.floor.push(this.floorSet)
+    this.capacity = 1,
+    this.seatsType = ''
+    console.log('after ', this.floor);
   }
+  reservations(val){
+    this.makeReservations = val;
+  }
+
+  add() {
+    this.floorSet.capacity = ++this.floorSet.capacity;
+  }
+  minus() {
+    this.floorSet.capacity = --this.floorSet.capacity;
+  }
+  
 }

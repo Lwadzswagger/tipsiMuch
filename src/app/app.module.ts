@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularFirestore } from 'angularfire2/firestore';
 
 
-
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment.prod';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -19,6 +18,7 @@ import { AuthService } from './services/auth.service';
 import { AddStoreComponent } from './components/add-store/add-store.component';
 import { StepOneComponent } from './components/add-store/step-one/step-one.component';
 import { StepTwoComponent } from './components/add-store/step-two/step-two.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,8 @@ import { StepTwoComponent } from './components/add-store/step-two/step-two.compo
     FooterComponent,
     AddStoreComponent,
     StepOneComponent,
-    StepTwoComponent
+    StepTwoComponent,
+    SignInComponent,
   ],
   imports: [
     BrowserModule,

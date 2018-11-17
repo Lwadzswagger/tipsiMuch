@@ -30,7 +30,19 @@ establishmentType  = "";
   ) { }
 
   ngOnInit() {
-  }
+  //   this.mapLoader.load().then(() => {
+  //     let autocomplete = new google.maps.places.Autocomplete(
+  //       this.addressElementRef.nativeElement, {
+  //         types: ["address"],
+  //         componentRestrictions: { 'country': 'za' }
+  //       }
+  //     );
+  //     autocomplete.addListener("place_changed", () => {
+  //       this.ngZone.run(() => {
+  //         let place: google.maps.places.PlaceResult=autocomplete.getPlace();
+  //         if (place.geometry === undefined || place.geometry === null) {
+  //           return;
+          }
 
   
   profileDetect(event: any) {
@@ -39,9 +51,9 @@ establishmentType  = "";
      this.storePicture = new UploadFiles(file.item(0));
          this.filePreview(event, 'store-pics');
          // push profile
-         // if (this.storeProfileName) {
-      this.uploader.pushUpload(this.storePicture, 'store-pics', 'storeProfileName' );
-         // }
+         if (this.storeProfileName) {
+      this.uploader.pushUpload(this.storePicture, 'store-pics', this.storeProfileName );
+         }
          
         } else {
        console.error('No store photo found!');
