@@ -1,8 +1,5 @@
-.navigator{
-    display: flex;
-   justify-content: space-between;
-}
+
 .pink{
     color:white;
-    background-color: FF3366;
+    background-color: #FF3366;
 }

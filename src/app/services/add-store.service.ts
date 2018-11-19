@@ -5,6 +5,7 @@ import {
   AngularFirestoreCollection
 } from "angularfire2/firestore";
 import { Store, Setup } from '../models/stores.model';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,10 @@ export class AddStoreService {
   step = 1;
 
   constructor(
-    private afs: AngularFirestore, ) {
+    protected afs: AngularFirestore,
+    // protected auth: AuthService,
+
+  ) {
     this.store = {
       contact: {
         name: '',

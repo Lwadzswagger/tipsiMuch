@@ -1,69 +1,69 @@
+<div class="md-form mb-5">
+  <label data-error="wrong" data-success="right" for="form29">Store Contact Number</label>
+  <input type="email" id="form29" [(ngModel)]="storeProfileCellNumber" class="form-control validate">
+</div>
 
 <div class="md-form mb-5">
-    <i class="fa fa-envelope prefix grey-text"></i>
-    <label data-error="wrong" data-success="right" for="form29">Store Contact Number</label>
-    <input type="email" id="form29" [(ngModel)]="storeProfileCellNumber" class="form-control validate">
+  <label data-error="wrong" data-success="right" for="form32">Person to chat to</label>
+  <input type="text" id="form32" [(ngModel)]="contactName" class="form-control validate">
 </div>
-  
-  <div class="md-form mb-5">
-    <i class="fa fa-tag prefix grey-text"></i>
-    <label data-error="wrong" data-success="right" for="form32">Person to chat to</label>
-    <input type="text" id="form32"  [(ngModel)]="contactName" class="form-control validate">
-  </div>
-  
-  <div class="md-form">
-    <i class="fa fa-pencil prefix grey-text"></i>
-    <label data-error="wrong" data-success="right" for="form8">Position held by person</label>
-    <input type="text" id="form8" [(ngModel)]="contactPosition" class="form-control validate">
-  </div>
-  
- 
-    <div class="line col-md-12">
-      <div class="col-md-2 col-sm-12 height-46 display-flex">
-        <label class="text-line-middle" for="gender">Can you make reservations</label>
-      </div>
-      <div class="col-md-10">
-  
-        <!-- Yes -->
-        <div class="col-md-2 col-sm-12 display-flex">
-          <div class="radio" [ngClass]="makeReservations === true  ? 'selected' : 'unselected'" (click)="reservations(true); genderPristine=false">
-          </div>
-          <label class="text-line-middle radio-label">Yes</label>
-        </div>
 
-        <!-- No -->
-        <div class="col-md-2 col-sm-12 display-flex">
-          <div class="radio" [ngClass]="makeReservations === false  ? 'selected' : 'unselected'" (click)="reservations(false); genderPristine=false"></div>
-          <label class="text-line-middle radio-label">No</label>
-        </div>
+<div class="md-form">
+  <label data-error="wrong" data-success="right" for="form8">Position held by person</label>
+  <input type="text" id="form8" [(ngModel)]="contactPosition" class="form-control validate">
+</div>
+
+
+<div class="line col-md-12">
+  <div class="col-md-2 col-sm-12 height-46 display-flex">
+    <label class="text-line-middle" for="gender">Can you make reservations</label>
+  </div>
+  <div class="col-md-10">
+
+    <!-- Yes -->
+    <div class="col-md-2 col-sm-12 display-flex">
+      <div class="radio" [ngClass]="makeReservations === true  ? 'selected' : 'unselected'" (click)="reservations(true); genderPristine=false">
       </div>
+      <label class="text-line-middle radio-label">Yes</label>
     </div>
 
-  <div class="md-form mb-5">
-    <i class="fa fa-tag prefix grey-text"></i>
-    <label data-error="wrong" data-success="right" for="form32">What seats do you have and how many are them</label>
-    
-    <input type="text" id="form32"  [(ngModel)]="seatsType" placeholder="i.e Fatsak, Standing booth, 3 seater VIP couch, etc." class="form-control validate">
-    <!-- <input type="text" id="form32" placeholer="5" type="number" class="form-control validate"> -->
-  
-    <div class="col-lg-2">
-      <div class="input-group">
-  <span class="input-group-btn">
-      <button type="button" class="btn btn-danger btn-number"   (click)="minus()">
-       
-    <i class="fa fa-minus"></i>
-      </button>
-  </span>
-  <input type="text" id="quantity" [(ngModel)]="capacity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
-  <span class="input-group-btn">
-      <button type="button" class="btn btn-success btn-number" (click)="add()">
-    <i class="fa fa-plus"></i> 
-      </button>
-  </span>
-</div>
-</div>
-    <span class="btn btn-primary"(click)="addSet()">Add set</span>
+    <!-- No -->
+    <div class="col-md-2 col-sm-12 display-flex">
+      <div class="radio" [ngClass]="makeReservations === false  ? 'selected' : 'unselected'" (click)="reservations(false); genderPristine=false"></div>
+      <label class="text-line-middle radio-label">No</label>
+    </div>
   </div>
+</div>
+
+<div class="md-form mb-5">
+  <label data-error="wrong" data-success="right" for="form32">What seats do you have and how many are there</label>
+  <span class="adder"  *ngIf="this.adder === false">
+    <div class="btn btn-block btn-primary" (click)="this.adder = true" >
+        <i class="fa fa-plus"></i> Add set
+    </div>
+  </span>
+<span class="addMore"  *ngIf="this.adder === true"   >
   
-  <div class="md-form navigator"><div class="btn next" (click)="back()">Back</div>
-  <div class="btn pink" (click)="done()">Done</div></div>
+    <input type="text" id="form32" [(ngModel)]="floorSet.seatsType" placeholder="i.e Fatsak, Standing booth, 3 seater VIP couch, etc."
+    class="form-control validate">
+
+  <div class="col-lg-2">
+    <div class="input-group">
+      <button type="button" class="btn btn-danger btn-number" (click)="minus()">
+        <i class="fa fa-minus"></i>
+      </button>
+      <input type="number" id="quantity" [(ngModel)]="floorSet.capacity" name="quantity" class="form-control input-number"
+        value="1" min="1" max="100">
+      <button type="button" class="btn btn-success btn-number" (click)="add()">
+        <i class="fa fa-plus"></i>
+      </button>
+    </div>
+  </div>
+  <span class="btn btn-primary" (click)="addSet()">Add set</span>
+</span>
+</div>
+
+<div class="md-form navigator">
+  <div class="btn next" (click)="back()">Back</div>
+  <div class="btn pink" (click)="done()">Done</div>
+</div>

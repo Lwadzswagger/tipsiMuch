@@ -7,6 +7,15 @@ import * as firebase from 'firebase';
 @Injectable({
   providedIn: 'root'
 })
+
+// export class User{
+//   displayName?: string
+//   uid?:string
+//   avatar?:string
+//   hasAStore?:boolean
+//   nickname?:string
+// }
+
 export class AuthService {
 
   constructor(
@@ -20,7 +29,8 @@ export class AuthService {
     this.afAuth.auth
     .signInWithPopup(new firebase.auth.GoogleAuthProvider())
     .then(() => {
-      this.router.navigate(['']);
+    // this.afAuth.auth.currentUser
+      this.router.navigate(['/']);
      })
     .catch(error => this.handleError(error));
  

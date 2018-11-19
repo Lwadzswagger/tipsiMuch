@@ -71,6 +71,11 @@ select {
   color: #FF3366;
   font-size: 30px;
 }
+.navigator{
+  display: flex;  
+  margin-top: 20px;
+ justify-content: space-between;
+}
 
 .image-input {
   z-index: 10;
@@ -118,7 +123,8 @@ img {
 
 .heading {
   font-size: 21px;
-  color: #333;
+  color: #FF3366;
+  text-transform: capitalize;
   font-weight: 300; 
 }
 
