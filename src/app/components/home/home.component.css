@@ -7,51 +7,39 @@
     margin: auto;
     margin-top: 100px;
 }
-.img{
+.card-image{
     height: auto;
     width: 100px;
 }
-.card-1{
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
-    transition: 0.4s;
-    width: 350px;
-    background: #fff;
-    text-align: center;
-    font-size: 16px;
-    font-family: sans-serif;
-    float: left;
-    margin: 10px;
-}
-.card-2{
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
-    transition: 0.4s;
-    width: 350px;
-    background: #fff;
-    text-align: center;
-    font-size: 16px;
-    font-family: sans-serif;
-    float: left;
-    margin: 10px;
-}
-.card-3{
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
-    transition: 0.4s;
-    width: 350px;
-    background: #fff;
-    text-align: center;
-    font-size: 16px;
-    font-family: sans-serif;
-    float: left;
-    margin: 10px;
+.container {
+    background: #eee;
+
 }
 
+    
+.card{
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background-color: white;
+    margin: 15px;
+}
+.card-content{
+    padding: 15px 25px;
+}
 
-.card:hover{
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
+.card-stacked{
+    max-height: 100px;
+    display: inline-block;
 }
-.container{
-    padding: 2px 16px;
+.card-action {
+    padding: 5px 25px;
 }
+
+    
+          
+
+           
 .checked{
     color: orange;
 }
