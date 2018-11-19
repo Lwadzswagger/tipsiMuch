@@ -3,6 +3,7 @@ import { Store } from 'src/app/models/stores.model';
 import { AddStoreService } from 'src/app/services/add-store.service';
 import { FileUploaderService } from 'src/app/services/file-uploader.service';
 import { UploadFiles } from 'src/app/models/uploadFiles.model';
+import { $ } from 'protractor';
 
 @Component({
   selector: 'app-step-one',
@@ -14,14 +15,17 @@ export class StepOneComponent implements OnInit {
 
   newStore: Store
   storePicture: any;
-
   storePicUrl;
-  storeProfileName = "";
-  slogan = "";
-  location = "";
-  establishmentType = "";
 
 
+ storeProfileName = ""
+  
+ slogan = "";
+ location = "";
+ establishmentType = "";
+  
+
+ 
 
   constructor(
     private addStore: AddStoreService,
