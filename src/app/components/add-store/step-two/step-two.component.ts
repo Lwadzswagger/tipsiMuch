@@ -45,7 +45,7 @@ export class StepTwoComponent implements OnInit {
     this.adder = false;
   }
   reservations(val){
-    console.log(val);    
+    // console.log(val);    
     this.makeReservations = val;
   }
 

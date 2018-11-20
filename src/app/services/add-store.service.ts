@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { map } from "rxjs/operators";
 import {
   AngularFirestoreDocument,
   AngularFirestore,
@@ -38,15 +39,25 @@ export class AddStoreService {
       // , tradingHours: ""
       , establishmentType: ''
       , slogan: ''
-      , storeOwner:this.auth.getcurrentUser().displayName
+      , storeOwner:''
       , employees: new Array()
       , reviewsRatings: new Array()
     }
 
   }
 
+  getData() {
+    return this.storeCollectionRef.get().toPromise().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+          // doc.data() is never undefined for query doc snapshots
+          console.log(doc.id, " => ", doc.data());
+      });
+  });
+  }
+
   registerStore(store: Store) {
     this.store = store;
+    this.store.storeOwner = this.auth.getcurrentUser().displayName
     this.storeCollectionRef
       .doc(this.store.storeProfile.name)
       .set(Object.assign({}, this.store))
