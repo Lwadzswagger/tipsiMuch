@@ -19,7 +19,7 @@ export class AddStoreService {
 
   constructor(
     protected afs: AngularFirestore,
-    // protected auth: AuthService,
+    protected auth: AuthService,
 
   ) {
     this.store = {
@@ -38,7 +38,7 @@ export class AddStoreService {
       // , tradingHours: ""
       , establishmentType: ''
       , slogan: ''
-      , storeOwner: ''
+      , storeOwner:this.auth.getcurrentUser().displayName
       , employees: new Array()
       , reviewsRatings: new Array()
     }

@@ -2,3 +2,43 @@
     background-color: grey;
     text-align: center;
 }
+
+.row {
+    margin: 0;
+}
+
+.foot {
+    min-height: 200px;
+    background-color: #1f1e1e;
+    color: #8c8c8c;
+    font-size: 17px;
+    padding: 30px 8px;
+    margin-bottom: 0px;
+    width: 100%;
+    position: absolute
+
+}
+
+.footerbox {
+    display: flex;
+}
+
+.btn-pink{
+    background-color:  #FF3366;
+    color: #ffffff;
+}
+.form-control {
+    border-radius: 4px 0px 0px 4px;
+}
+
+.btn {
+    border-radius: 0px 4px 4px 0px;
+}
+
+@media (max-width: 768px) {
+    #adress,
+    #contact {
+        border-bottom: 1px solid #8c8c8c;
+        margin-bottom: 10px;
+    }
+}

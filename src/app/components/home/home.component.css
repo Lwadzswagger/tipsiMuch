@@ -1,45 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Muli');
 .header{
-    background-image:linear-gradient(to right,rgb(130, 231, 238), #0e2fe9);
+   background-image: url('https://c1.staticflickr.com/8/7459/11536816066_d1acaf5579_b.jpg');
+   width: 100%;
+   height: 300px;
+   border-radius: 5px;
+   background-size: cover;
     }
 
 .wrapper{
-    width: 350px;
-    margin: auto;
-    margin-top: 100px;
+   background-color:#f0e2eeb0;
+}
+.checkoutStore{
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: #FF3366;
+    background-color:  #FF3366;
+    color: #ffffff;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
 }
 .card-image{
     height: auto;
-    width: 100px;
-}
-.container {
-    background: #eee;
 
 }
+.storeContent{
+    display: flex;    
+}
+.storeCard{
+    padding: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background-color: #ffffff;
+    border: 2px solid #FF3366;
+    border-radius: 5px;
+}
+.head{
+    color: #FF3366;
+    font-family: 'Muli', sans-serif;
+}
+.img{
+    height: 133px;
+    width: 160px;
+    }
 
-    
 .card{
     display: flex;
     align-items: center;
     overflow: hidden;
-    background-color: white;
+    background-color: #ffffff;
     margin: 15px;
-}
-.card-content{
-    padding: 15px 25px;
-}
-
-.card-stacked{
-    max-height: 100px;
-    display: inline-block;
-}
-.card-action {
-    padding: 5px 25px;
-}
-
-    
-          
+} 
 
            
 .checked{
-    color: orange;
+    color: #FF3366;
+}
+.storeInfo{
+    /* background-color: green;  */
+    height: auto;
+    padding: 5px;
 }
