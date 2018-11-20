@@ -81,7 +81,7 @@ export class StepOneComponent implements OnInit {
     this.addStore.store.storeProfile.name = this.storeProfileName;
     this.addStore.store.slogan = this.slogan;
     this.addStore.store.location = this.location;
-    this.addStore.store.storeOwner = this.location;
+    // this.addStore.store.storeOwner = this.location;
     this.addStore.store.establishmentType = this.establishmentType;
     this.addStore.step++
   }

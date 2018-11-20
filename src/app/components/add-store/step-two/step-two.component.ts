@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AddStoreService } from 'src/app/services/add-store.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-step-two',
@@ -12,13 +13,8 @@ export class StepTwoComponent implements OnInit {
   storeProfileCellNumber = "";
   contactName = ""
   contactPosition = ""
-  // tradingHours  = "";
-  capacity: 1
-    seatsType: ''
-
   makeReservations ;
-  // contactCellNumber = ""
- floor= new Array();
+  
   floorSet = {
     capacity:1,
     seatsType:''
@@ -26,7 +22,10 @@ export class StepTwoComponent implements OnInit {
   reviewsRatings = null;
 
 
-  constructor(private addStore: AddStoreService, ) { }
+  constructor(
+    private addStore: AddStoreService,
+    private router: Router,
+     ) { }
 
   ngOnInit() {
   }
@@ -35,22 +34,18 @@ export class StepTwoComponent implements OnInit {
     this.addStore.store.contact.position = this.contactPosition;
     this.addStore.store.storeProfile.cellNumber = this.storeProfileCellNumber;
     this.addStore.store.contact.name = this.contactName;
-    console.log(this.addStore.store);
-    
+    this.addStore.store.makeReservations = this.makeReservations;
 
-  }
-  addSet() {
-    // this.floorSet.capacity= this.capacity
-    // this.floorSet.seatsType= this.seatsType
-    console.log('floorset ',this.floorSet);    
-    // console.log('floor ',this.floorSet);    
-    this.floor.push(this.floorSet)
-    // this.floorSet.capacity = 1,
-    // this.floorSet.seatsType = ''
-    console.log('floor after ', this.floor);
+    console.log(this.addStore.store);
+    this.addStore.registerStore(this.addStore.store);
+    this.router.navigate(['/'])
+    }
+  addSet() {       
+    this.addStore.store.floorSetting.push(this.floorSet)
     this.adder = false;
   }
   reservations(val){
+    console.log(val);    
     this.makeReservations = val;
   }
 
@@ -62,7 +57,6 @@ export class StepTwoComponent implements OnInit {
   }
   back(){
   this.addStore.step = 1;
-  console.log('shold be cack', this.addStore.step);
   
   }
   
