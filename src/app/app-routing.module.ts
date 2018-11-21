@@ -4,10 +4,15 @@ import { HomeComponent } from './components/home/home.component';
 import { AddStoreComponent } from './components/add-store/add-store.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { StoreInfoComponent } from './components/home/store-info/store-info.component';
 
 const routes: Routes = [
-    { path: '', component: HomeComponent },
+  {
+    path: '',    redirectTo: 'stores',   pathMatch: 'full'
+  },
+    { path: 'stores', component: HomeComponent },
     { path: 'sign-in', component: SignInComponent },
+    { path: 'store-Info', component: StoreInfoComponent },
     { path: 'addStore', component: AddStoreComponent,  canActivate: [AuthGuardService] },
   ];
 

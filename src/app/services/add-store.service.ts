@@ -15,15 +15,16 @@ export class AddStoreService {
 
   store: Store;
   storeCollectionRef = this.afs.collection("stores");
-
   step = 1;
+  
+  registeredStores = []
 
   constructor(
     protected afs: AngularFirestore,
     protected auth: AuthService,
 
   ) {
-    this.store = {
+     this.store = {
       contact: {
         name: '',
         position: '',
@@ -39,20 +40,27 @@ export class AddStoreService {
       // , tradingHours: ""
       , establishmentType: ''
       , slogan: ''
-      , storeOwner:''
+      , storeOwner: ''
       , employees: new Array()
       , reviewsRatings: new Array()
     }
 
+    // console.log('data from service ', this.getData())
   }
 
   getData() {
-    return this.storeCollectionRef.get().toPromise().then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
-          // doc.data() is never undefined for query doc snapshots
-          console.log(doc.id, " => ", doc.data());
+    return this.storeCollectionRef.get().toPromise().then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+        // console.log('service ', doc.data())
+        // this.registeredStores.push(doc.data()); 
+                      
       });
-  });
+      // this.registeredStores.join(', ')
+    });
+  }
+
+  getStores(){
+    return this.storeCollectionRef.valueChanges()
   }
 
   registerStore(store: Store) {

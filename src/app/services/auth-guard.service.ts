@@ -19,7 +19,9 @@ export class AuthGuardService {
 return this.authservice.user$.pipe(map(user => {
 if (user) {return true;
 }else {
-  this.router.navigate(['/sign-in'], {queryParams: {returnUrl: state.url}  } ) ;
+  this.router.navigate(['/sign-in'],
+  //  {queryParams: {returnUrl: state.url}  }
+    ) ;
   return false; }
 }));
  }

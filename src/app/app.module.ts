@@ -19,6 +19,7 @@ import { AddStoreComponent } from './components/add-store/add-store.component';
 import { StepOneComponent } from './components/add-store/step-one/step-one.component';
 import { StepTwoComponent } from './components/add-store/step-two/step-two.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
+import { StoreInfoComponent } from './components/home/store-info/store-info.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
     StepOneComponent,
     StepTwoComponent,
     SignInComponent,
+    StoreInfoComponent,
   ],
   imports: [
     BrowserModule,

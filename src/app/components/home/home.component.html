@@ -1,67 +1,82 @@
 <div class=" wrapper">
 
   <div class="header">
-
-    <a class="btn btn-primasry checkoutStore" routerLink="addStore">Checkout Stores</a>
+<a class="btn btn-primasry checkoutStore" [routerLink]="[ '/addStore' ]">Get Started</a>
   </div>
 
 
-  <div class="storeCard">
-    <div class="storeContent">
-      <div class="store-image">
-        <img class="img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHWP5dJ-jvpAdjiz549S8DnfdMj_ssE6I7e7ea-_-MFe9Ofe49"
-          alt="Tigers Milk"/>
+
+
+  <div *ngIf="data === undefined;" class="timeline-item">
+      <div class="animated-background">
+          <div class="background-masker header-top"></div>
+          <div class="background-masker header-left"></div>
+          <div class="background-masker header-right"></div>
+          <div class="background-masker header-bottom"></div>
+          <div class="background-masker subheader-left"></div>
+          <div class="background-masker subheader-right"></div>
+          <div class="background-masker subheader-bottom"></div>
+          <div class="background-masker content-top"></div>
+          <div class="background-masker content-first-end"></div>
+          <div class="background-masker content-second-line"></div>
+          <div class="background-masker content-second-end"></div>
+          <div class="background-masker content-third-line"></div>
+          <div class="background-masker content-third-end"></div>
       </div>
-      <div class="storeInfo">
-        <h4 class="head">Tigers Milk</h4>
-          <p>Nice and good family environment</p>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-      <div class="card-action">
-      <a href="#">Read More</a>
-    </div>
-  </div>
-      
-    </div>
+    </div> 
 
-    
-  </div>
+  
 
-
-
-  <!-- 
-  <div class="card-2">
-    <img src="http://www.bgurbancafe.com/images/logo.png" style="width:100%" />
-    <div class="container">
-      <h4><b> BG Cafe</b></h4>
-      <p>Reviews: </p>
-      <p>Great place in the town center, away from the crowds</p>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-    </div>
+  <!-- <div class="storeCard">
+      <div class="storeContent">
+        <div class="store-image">
+          <img class="img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHWP5dJ-jvpAdjiz549S8DnfdMj_ssE6I7e7ea-_-MFe9Ofe49"
+            alt="Tigers Milk"/>
+        </div>
+        <div class="storeInfo">
+          <h4 class="head">Tigers Milk</h4>
+            <p class="storeSlogan">Nice and good family environment</p>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star"></span>
+        <div class="card-action">
+        <a href="#">Read More</a>
+      </div>
+    </div>      
+      </div>
   </div> -->
+
+  
+
+  <div *ngIf="data !== undefined;">
+      <div class="storeCard" *ngFor="let store of data">
+          <div class="storeContent"  >
+            <div class="store-image">
+              <img class="img" 
+              src="{{store.storeProfile.avatarUrl}}"
+                alt="Tigers Milk"/>
+            </div>
+            <div class="storeInfo">
+              <h4 class="head">{{store.storeProfile.name}}</h4>
+                <p class="storeSlogan" >{{store.slogan}}</p>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+            <div class="card-action">   
+          <a router-Link="store-Info" (click)="viewstore(store)">Read More</a>
+          </div>
+        </div>      
+          </div>
+      </div>
+     
+  </div>
+ 
 
 </div>
 
 
-
-<!-- 
-<div class="card-3">
-  <img src="https://upload.wikimedia.org/wikipedia/en/8/80/Slug_%26_Lettuce_logo.png" style="width:100%" />
-  <div class="container">
-    <h4><b> Slug and Lettuce Pub and Grill</b></h4>
-    <p>Reviews: </p>
-    <p>Good food, fair prices</p>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star "></span>
-    <span class="fa fa-star "></span>
-  </div>
-</div> -->
+ 
