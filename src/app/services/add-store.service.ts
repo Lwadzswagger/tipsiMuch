@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map } from "rxjs/operators";
-import {
-  AngularFirestoreDocument,
-  AngularFirestore,
-  AngularFirestoreCollection
-} from "angularfire2/firestore";
+import { AngularFirestore } from 'angularfire2/firestore';
 import { Store, Setup } from '../models/stores.model';
 import { AuthService } from './auth.service';
 
@@ -14,17 +9,17 @@ import { AuthService } from './auth.service';
 export class AddStoreService {
 
   store: Store;
-  storeCollectionRef = this.afs.collection("stores");
+  storeCollectionRef = this.afs.collection('stores');
   step = 1;
-  
-  registeredStores = []
+
+  registeredStores = [];
 
   constructor(
     protected afs: AngularFirestore,
     protected auth: AuthService,
 
   ) {
-     this.store = {
+    this.store = {
       contact: {
         name: '',
         position: '',
@@ -37,43 +32,47 @@ export class AddStoreService {
         cellNumber: '',
         avatarUrl: 'https://c1.staticflickr.com/8/7459/11536816066_d1acaf5579_b.jpg',
       }
-      // , tradingHours: ""
+
       , establishmentType: ''
       , slogan: ''
       , storeOwner: ''
       , employees: new Array()
       , reviewsRatings: new Array()
-    }
+    };
 
-    // console.log('data from service ', this.getData())
   }
 
   getData() {
     return this.storeCollectionRef.get().toPromise().then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {
-        // console.log('service ', doc.data())
-        // this.registeredStores.push(doc.data()); 
-                      
+
       });
-      // this.registeredStores.join(', ')
+
     });
   }
 
-  getStores(){
-    return this.storeCollectionRef.valueChanges()
+  getStores() {
+    return this.storeCollectionRef.valueChanges();
+  }
+  deleteStore(givenStore) {
+    this.storeCollectionRef.doc(givenStore).delete().then(function () {
+      console.log('Document successfully deleted!');
+    }).catch(function (error) {
+      console.error('Error removing document: ', error);
+    });
   }
 
   registerStore(store: Store) {
     this.store = store;
-    this.store.storeOwner = this.auth.getcurrentUser().displayName
+    this.store.storeOwner = this.auth.getcurrentUser().displayName;
     this.storeCollectionRef
       .doc(this.store.storeProfile.name)
       .set(Object.assign({}, this.store))
       .then(function (docRef) {
-        console.log("store registered!");
+        console.log('store registered!');
       })
       .catch(function (error) {
-        console.error("Error adding store: ", error);
+        console.error('Error adding store: ', error);
       });
   }
 }

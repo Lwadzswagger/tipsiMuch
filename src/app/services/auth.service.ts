@@ -20,10 +20,11 @@ export class AuthService {
     avatar: '',
     hasAStore: false,
     nickname: '',
-    notification:new Array()
-  }
-  firestoreUsersRef
-  firestoreUser
+    notification: new Array()
+  };
+
+  firestoreUsersRef;
+  firestoreUser;
 
   constructor(
 
@@ -41,7 +42,7 @@ export class AuthService {
     this.afAuth.auth
       .signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then(() => {
-        this.checkIfUserExist()
+        this.checkIfUserExist();
       })
       .catch(error => this.handleError(error));
 
@@ -56,20 +57,20 @@ export class AuthService {
     //   .then((docSnapshot) => {
     //     if (docSnapshot.exists) {
     //       this.firestoreUser.onSnapshot((doc) => {
-            this.router.navigate(['/']);
-      //     });
-      //   } else {
-      //     this.User.uid = this.getcurrentUser().uid;
-      //     this.User.avatar = this.getcurrentUser().photoURL;
-      //     this.User.displayName = this.getcurrentUser().displayName
-      //     this.User.hasAStore = false;
-      //     this.User.email = this.getcurrentUser().email;
-      //     this.User.nickname = 'BenCo';
-      //     this.firestoreUser.set(this.User);
-      //     console.log('user was not found and added successfully');
+    this.router.navigate(['/']);
+    //     });
+    //   } else {
+    //     this.User.uid = this.getcurrentUser().uid;
+    //     this.User.avatar = this.getcurrentUser().photoURL;
+    //     this.User.displayName = this.getcurrentUser().displayName
+    //     this.User.hasAStore = false;
+    //     this.User.email = this.getcurrentUser().email;
+    //     this.User.nickname = 'BenCo';
+    //     this.firestoreUser.set(this.User);
+    //     console.log('user was not found and added successfully');
 
-      //   }
-      // });
+    //   }
+    // });
   }
 
   isLoggedIn() {

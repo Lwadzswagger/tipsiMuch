@@ -1,11 +1,14 @@
-<h1>{{selectedstor.storeProfile.name}}</h1>
+<div class="btn btn-block btn-primary"><i class="far fa-edit"></i> Edit store</div>
+<div  type="button" data-toggle="modal" data-target="#myModal" class="btn btn-block btn-danger"> <i class="fas fa-trash-alt"></i> Delete store</div>
 
-<p> slogan found forn this card is :{{selectedstor.slogan}}</p>
+<h3>{{selectedstor.storeProfile.name}}</h3>
 
+<p>{{selectedstor.slogan}}</p>
 
-
+<div class="location"> <i class="fas fa-map-marker-alt"></i> {{selectedstor.location}}</div>
+<p>Store owner: {{selectedstor.storeOwner}}</p>
 <div class="fdfdfdfdf">
-        <h2>Toggleable Tabs</h2>
+        <!-- <h2>Toggleable Tabs</h2> -->
         <br>
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
@@ -23,16 +26,102 @@
         <!-- Tab panes -->
         <div class="tab-content">
           <div id="home" class="container tab-pane active"><br>
-            <h3>HOME</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <div class="btn btn-primary btn-block"><i class="fas fa-couch"></i> 
+              Add more tables</div>
+            <h3>available tables are:</h3>
+            <br>
+         <div class="row">
+           <span class="btn btn-success">Available</span>
+           <span class="btn btn-warning">Reserved</span>
+           <span class="btn btn-success">Available</span>
+           <span class="btn btn-warning">Reserved</span>
+           <span class="btn btn-success">Available</span>
+           <span class="btn btn-warning">Reserved</span>
+           <span class="btn btn-success">Available</span>
+           <span class="btn btn-success">Available</span>
+           <span class="btn btn-success">Available</span>
+           <span class="btn btn-success">Available</span>
+           <span class="btn btn-success">Available</span>
+           <span class="btn btn-success">Available</span>
+           <span class="btn btn-success">Available</span>
+
+         </div>
+            <br>
           </div>
           <div id="menu1" class="container tab-pane fade"><br>
-            <h3>Menu 1</h3>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          </div>
+        <div  class="timeline-item">
+              <div class="animated-background">
+                  <div class="background-masker header-top"></div>
+                  <div class="background-masker header-left"></div>
+                  <div class="background-masker header-right"></div>
+                  <div class="background-masker header-bottom"></div>
+                  <div class="background-masker subheader-left"></div>
+                  <div class="background-masker subheader-right"></div>
+                  <div class="background-masker subheader-bottom"></div>
+                  <div class="background-masker content-top"></div>
+                  <div class="background-masker content-first-end"></div>
+                  <div class="background-masker content-second-line"></div>
+                  <div class="background-masker content-second-end"></div>
+                  <div class="background-masker content-third-line"></div>
+                  <div class="background-masker content-third-end"></div>
+              </div>
+            </div>  </div>
           <div id="menu2" class="container tab-pane fade"><br>
-            <h3>Menu 2</h3>
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-          </div>
+            <h3>Happy Hour at: 2</h3>
+
+              </div>
         </div>
       </div>
+      <br>
+      <h3>Reviews</h3>
+      <div class="reviews">
+        <div  class="timeline-item">
+          <div class="animated-background">
+              <div class="background-masker header-top"></div>
+              <div class="background-masker header-left"></div>
+              <div class="background-masker header-right"></div>
+              <div class="background-masker header-bottom"></div>
+              <div class="background-masker subheader-left"></div>
+              <div class="background-masker subheader-right"></div>
+              <div class="background-masker subheader-bottom"></div>
+              <div class="background-masker content-top"></div>
+              <div class="background-masker content-first-end"></div>
+              <div class="background-masker content-second-line"></div>
+              <div class="background-masker content-second-end"></div>
+              <div class="background-masker content-third-line"></div>
+              <div class="background-masker content-third-end"></div>
+          </div>
+        </div> 
+      </div>
+      <div class="btn btn-primary btn-block"> <i class="far fa-star"></i> Add Review</div>
+      
+
+       <!-- Button to Open the Modal -->
+  <!-- <button>    Open modal  </button> -->
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Delete Store</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+         <p>You are about tot Delete you store and all related information... <br> <b>Are you Sure?</b> </p>
+        <div (click)="deleteStore(true)" data-dismiss="modal" class="btn btn-success btn-block">YES</div>
+        <div (click)="deleteStore(false)" data-dismiss="modal" class="btn btn-danger btn-block">NO</div>
+        </div>
+        
+        <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
