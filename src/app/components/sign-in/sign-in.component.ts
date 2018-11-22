@@ -13,7 +13,7 @@ export class SignInComponent implements OnInit {
   ngOnInit() {
   }
 
-  loginWithGoogle(){
+  loginWithGoogle() {
     this.authService.loginWithGoogle();
 
   }

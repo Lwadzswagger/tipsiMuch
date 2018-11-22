@@ -11,7 +11,7 @@ import { CacheService } from 'src/app/services/cache.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  data: any
+  data: any;
 
 
   constructor(
@@ -24,14 +24,14 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.store.getStores().subscribe(res => {
-      this.data = res
+      this.data = res;
       localStorage.setItem('stores', this.data);
-    })
+    });
   }
 
-viewstore(store){
-this.cache.selectedStore = store
-localStorage.setItem('selectedStore', JSON.stringify(store))
-  this.route.navigate(['store-Info'])
+viewstore(store) {
+this.cache.selectedStore = store;
+localStorage.setItem('selectedStore', JSON.stringify(store));
+  this.route.navigate(['store-Info']);
 }
 }

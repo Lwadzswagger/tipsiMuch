@@ -20,6 +20,7 @@ import { StepOneComponent } from './components/add-store/step-one/step-one.compo
 import { StepTwoComponent } from './components/add-store/step-two/step-two.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { StoreInfoComponent } from './components/home/store-info/store-info.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { StoreInfoComponent } from './components/home/store-info/store-info.comp
     StepTwoComponent,
     SignInComponent,
     StoreInfoComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
