@@ -4,6 +4,7 @@ import { AddStoreService } from 'src/app/services/add-store.service';
 import { FileUploaderService } from 'src/app/services/file-uploader.service';
 import { UploadFiles } from 'src/app/models/uploadFiles.model';
 import { $ } from 'protractor';
+import { Script } from 'vm';
 
 @Component({
   selector: 'app-step-one',
@@ -13,19 +14,26 @@ import { $ } from 'protractor';
 export class StepOneComponent implements OnInit {
 
 
+
+
+
   newStore: Store
   storePicture: any;
-  storePicUrl;
+validated= true;
+  storePicUrl = "";
+
+  storeProfileName = "";
 
 
- storeProfileName = ""
-  
- slogan = "";
- location = "";
- establishmentType = "";
-  
+  slogan = "";
 
- 
+
+  location = "";
+
+  establishmentType = "";
+
+
+
 
   constructor(
     private addStore: AddStoreService,
@@ -33,6 +41,13 @@ export class StepOneComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+this.validate()
+
+
+
+
+
     //   this.mapLoader.load().then(() => {
     //     let autocomplete = new google.maps.places.Autocomplete(
     //       this.addressElementRef.nativeElement, {
@@ -47,6 +62,15 @@ export class StepOneComponent implements OnInit {
     //           return;
   }
 
+
+  validate(){
+    if (this.slogan === '' || this.establishmentType === '') {
+      this.validated = false
+    } else {
+      this.validated = true
+      
+    }
+  }
 
   profileDetect(event: any) {
     const file = (event.target as HTMLInputElement).files
