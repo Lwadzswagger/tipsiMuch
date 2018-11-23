@@ -13,6 +13,7 @@ import { StoreUtilsService } from 'src/app/services/store-utils.service';
   templateUrl: './store-info.component.html',
   styleUrls: ['./store-info.component.css', './../home.component.css']
 })
+
 export class StoreInfoComponent implements OnInit {
   @Input() stores: Store;
   selectedstor: Store;
@@ -20,6 +21,8 @@ export class StoreInfoComponent implements OnInit {
   name;
   price;
   des;
+  Visible;
+  invite;
 
   editing = false;
   selectedTable;
@@ -56,14 +59,12 @@ export class StoreInfoComponent implements OnInit {
     }
   ];
 
-
   constructor(
-    protected cache: CacheService,
-    protected store: AddStoreService,
-    protected router: Router,
-    protected auth: AuthService,
-    protected storeUtil: StoreUtilsService,
-
+    public cache: CacheService,
+    public store: AddStoreService,
+    public router: Router,
+    public auth: AuthService,
+    public storeUtil: StoreUtilsService,
   ) {
     if (cache.selectedStore) {
       this.selectedstor = cache.selectedStore;
@@ -85,7 +86,12 @@ export class StoreInfoComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  invited(val) {
+this.invite = val;
+  }
+  Visiblility(val) {
+    this.Visible = val;
+  }
   deleteStore(val) {
     if (val) {
       this.store.deleteStore(this.selectedstor.storeProfile.name);
@@ -95,5 +101,7 @@ export class StoreInfoComponent implements OnInit {
   sendMenuItem() {
     this.storeUtil.saveMenu(this.selectedstor.storeProfile.name);
   }
-
+win() {
+  window.alert(`You've joined the table now invite people by link from you profile`);
+}
 }

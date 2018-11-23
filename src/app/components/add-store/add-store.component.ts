@@ -9,7 +9,7 @@ import { AddStoreService } from 'src/app/services/add-store.service';
 export class AddStoreComponent implements OnInit {
 
   constructor(
-   protected addstore: AddStoreService
+   public addstore: AddStoreService
      ) {}
 
   ngOnInit() {}

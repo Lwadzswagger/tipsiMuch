@@ -3,11 +3,10 @@ import { FormsModule  } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { AngularFireModule} from 'angularfire2';
 import { AngularFireDatabaseModule} from 'angularfire2/database';
-import { AngularFireAuthModule} from 'angularfire2/auth'
+import { AngularFireAuthModule} from 'angularfire2/auth';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFirestore } from 'angularfire2/firestore';
-
-
+import { AgmCoreModule } from '@agm/core';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment.prod';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -21,6 +20,7 @@ import { StepTwoComponent } from './components/add-store/step-two/step-two.compo
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { StoreInfoComponent } from './components/home/store-info/store-info.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { GooglemapsComponent } from './components/googlemaps/googlemaps.component';
 
 @NgModule({
   declarations: [
@@ -34,16 +34,20 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     SignInComponent,
     StoreInfoComponent,
     UserProfileComponent,
+    GooglemapsComponent,
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC39tp6z16f4X3XPPuLX7HZZSvWPLBp0Mg'
+    }),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     FormsModule,
     AppRoutingModule
   ],
-  providers: [ 
+  providers: [
     AddStoreService,
     AuthService,
     AngularFirestore

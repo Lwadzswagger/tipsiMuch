@@ -22,14 +22,14 @@
 
     <!-- Yes -->
     <div class="col-md-2 col-sm-12 display-flex">
-      <div class="radio" [ngClass]="makeReservations === true  ? 'selected' : 'unselected'" (click)="reservations(true); genderPristine=false">
+      <div class="radio" [ngClass]="makeReservations === true  ? 'selected' : 'unselected'" (click)="reservations(true);  ">
       </div>
       <label class="text-line-middle radio-label">Yes</label>
     </div>
 
     <!-- No -->
     <div class="col-md-2 col-sm-12 display-flex">
-      <div class="radio" [ngClass]="makeReservations === false  ? 'selected' : 'unselected'" (click)="reservations(false); genderPristine=false"></div>
+      <div class="radio" [ngClass]="makeReservations === false  ? 'selected' : 'unselected'" (click)="reservations(false);  "></div>
       <label class="text-line-middle radio-label">No</label>
     </div>
   </div>

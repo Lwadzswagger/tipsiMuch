@@ -51,7 +51,7 @@
               <span class="seats">Seats on this table 4</span><br>
               <span class="people">People on this table:<br>none</span><br>
               <span class="position">Its an OutDoor table</span><br>
-            <div  data-toggle="modal" data-target="#myModal1"  class="join-table btn btn-primary"><i class="fas fa-plus-circle"></i> Join table</div>
+            <div  data-toggle="modal" data-target="#myModal2"  class="join-table btn btn-primary"><i class="fas fa-plus-circle"></i> Join table</div>
             <!-- <span>{{table.name}}</span> -->
          </div>
          <div class="cards-store"  *ngFor="let table of tables; index as i">
@@ -154,7 +154,7 @@
     </div>
   </div>
 </div>
-<div class="btn btn-primary btn-block"> <i class="far fa-star"></i> Add Review</div>
+<div class="btn review btn-primary btn-block"> <i class="far fa-star"></i> Add Review</div>
 
 
 <!-- Button to Open the Modal -->
@@ -162,30 +162,100 @@
 
 <!-- The Modal -->
 <div class="modal" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Delete Store</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Delete Store</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          <p>You are about to <b>Delete</b> your store and all related information... <br> <b>Are you Sure?</b> </p>
+          <div (click)="deleteStore(true)" data-dismiss="modal" class="btn btn-success btn-block">YES</div>
+          <div (click)="deleteStore(false)" data-dismiss="modal" class="btn btn-danger btn-block">NO</div>
+        </div>
+  
+        <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+          </div> -->
+  
       </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        <p>You are about to <b>Delete</b> your store and all related information... <br> <b>Are you Sure?</b> </p>
-        <div (click)="deleteStore(true)" data-dismiss="modal" class="btn btn-success btn-block">YES</div>
-        <div (click)="deleteStore(false)" data-dismiss="modal" class="btn btn-danger btn-block">NO</div>
-      </div>
-
-      <!-- Modal footer -->
-      <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-        </div> -->
-
     </div>
   </div>
-</div>
+  <div class="modal" id="myModal2">
+      <div class="modal-dialog">
+        <div class="modal-content">
+    
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Delete Store</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+    
+          <!-- Modal body -->
+          <div class="modal-body">
+            <p>You are about to <b>Join</b> a table with <br> No one in it...therefore setup a few things</p>
+            <!-- <h5>Do you want to be visible to customers?</h5> -->
+
+            
+            <div class="line col-md-12">
+                <div class="col-md-2 col-sm-12 height-46 display-flex">
+                  <label class="text-line-middle" for="gender">Do you want to be visible to customers?</label>
+                </div>
+                <div class="col-md-10">
+              
+                  <!-- Yes -->
+                  <div class="col-md-2 col-sm-12 display-flex">
+                    <div class="radio" [ngClass]="Visible === true  ? 'selected' : 'unselected'" (click)="Visiblility(true);  ">
+                    </div>
+                    <label class="text-line-middle radio-label">Yes</label>
+                  </div>
+              
+                  <!-- No -->
+                  <div class="col-md-2 col-sm-12 display-flex">
+                    <div class="radio" [ngClass]="Visible === false  ? 'selected' : 'unselected'" (click)="Visiblility(false);  "></div>
+                    <label class="text-line-middle radio-label">No</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="line col-md-12">
+                  <div class="col-md-2 col-sm-12 height-46 display-flex">
+                    <label class="text-line-middle" for="invite">Hide table except to those invited?</label>
+                  </div>
+                  <div class="col-md-10">
+                
+                    <!-- Yes -->
+                    <div class="col-md-2 col-sm-12 display-flex">
+                      <div class="radio" [ngClass]="invite === true  ? 'selected' : 'unselected'" (click)="invited(true);  ">
+                      </div>
+                      <label class="text-line-middle radio-label">Yes</label>
+                    </div>
+                
+                    <!-- No -->
+                    <div class="col-md-2 col-sm-12 display-flex">
+                      <div class="radio" [ngClass]="invite === false  ? 'selected' : 'unselected'" (click)="invited(false);  "></div>
+                      <label class="text-line-middle radio-label">No</label>
+                    </div>
+                  </div>
+                </div>
+                
+            <div (click)="win()" data-dismiss="modal" class="btn btn-primary btn-block">Join Table</div>
+            <!-- <div (click)="deleteStodre(false)" data-dismiss="modal" class="btn btn-danger btn-block">NO</div> -->
+          </div>
+    
+          <!-- Modal footer -->
+          <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+            </div> -->
+    
+        </div>
+      </div>
+    </div>
 
 <div class="modal" id="myModal1">
     <div class="modal-dialog">

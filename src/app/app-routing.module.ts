@@ -6,6 +6,7 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { StoreInfoComponent } from './components/home/store-info/store-info.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { GooglemapsComponent } from './components/googlemaps/googlemaps.component';
 
 const routes: Routes = [
   {
@@ -13,7 +14,8 @@ const routes: Routes = [
   },
     { path: 'stores', component: HomeComponent },
     { path: 'sign-in', component: SignInComponent },
-    { path: 'store-Info', component: StoreInfoComponent  , canActivate: [AuthGuardService]},
+    { path: 'store-Info', component: StoreInfoComponent  },
+    { path: 'map', component: GooglemapsComponent  },
     { path: 'user-Info', component: UserProfileComponent, canActivate: [AuthGuardService] },
     { path: 'addStore', component: AddStoreComponent,  canActivate: [AuthGuardService] },
   ];

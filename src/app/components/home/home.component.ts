@@ -41,10 +41,10 @@ export class HomeComponent implements OnInit {
     this.cache.selectedStore = store;
     localStorage.setItem('selectedStore', JSON.stringify(store));
     // localStorage.setItem('currentUser', (this.auth.getDBCurrentUser()));
- this.auth.getDBCurrentUser().subscribe(res => {
-    this.cache.currentUser = res;
-    localStorage.setItem('currentuser', JSON.stringify(res));
-  });
+//  this.auth.getDBCurrentUser().subscribe(res => {
+//     this.cache.currentUser = res;
+//     localStorage.setItem('currentuser', JSON.stringify(res));
+//   });
 
     // this.route.navigate(['store-Info']);
   }
