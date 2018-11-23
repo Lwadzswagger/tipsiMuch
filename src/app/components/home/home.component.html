@@ -24,35 +24,13 @@
           <div class="background-masker content-third-end"></div>
       </div>
     </div> 
-
-  
-
-  <!-- <div class="storeCard">
-      <div class="storeContent">
-        <div class="store-image">
-          <img class="img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHWP5dJ-jvpAdjiz549S8DnfdMj_ssE6I7e7ea-_-MFe9Ofe49"
-            alt="Tigers Milk"/>
-        </div>
-        <div class="storeInfo">
-          <h4 class="head">Tigers Milk</h4>
-            <p class="storeSlogan">Nice and good family environment</p>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star"></span>
-        <div class="card-action">
-        <a href="#">Read More</a>
-      </div>
-    </div>      
-      </div>
-  </div> -->
-
-  
-
-  <div *ngIf="data !== undefined;">
-      <div class="storeCard" *ngFor="let store of data">
-          <div class="storeContent"  >
+    
+    
+    <div *ngIf="data !== undefined;">
+      <div class="container">
+        <div class="storeCard" *ngFor="let store of data">
+            <a [routerLink]="[ '/store-Info' ]">
+          <div class="storeContent" (click)="viewstore(store)" >
             <div class="store-image">
               <img class="img" 
               src="{{store.storeProfile.avatarUrl}}"
@@ -67,11 +45,12 @@
               <span class="fa fa-star checked"></span>
               <span class="fa fa-star"></span>
             <div class="card-action">   
-          <a router-Link="store-Info" (click)="viewstore(store)">Read More</a>
+          <a router-Link="store-Info" >Read More...</a>
           </div>
         </div>      
-          </div>
+          </div>  </a>
       </div>
+    </div>
      
   </div>
  

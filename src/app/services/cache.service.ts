@@ -7,8 +7,9 @@ import { Store } from '../models/stores.model';
 export class CacheService {
 
   constructor() { }
-  store:Store;
-  currentUser
-  
-  selectedStore
+  store: Store;
+
+  currentUser;
+
+  selectedStore;
 }

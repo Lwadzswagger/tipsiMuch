@@ -6,3 +6,164 @@
     border-radius: 5px;
     padding: 5px; 
 }
+.location{
+    padding: 8px;
+    /* border-bottom: 3px solid #aab0b5e8; */
+    color: #FF3366;
+    box-shadow: 8px 6px 11px 0px #FF3366;
+    /* border-radius: 10px; */
+    border-bottom-left-radius: 20px;
+}
+.des{
+    border: 2px solid ;
+    padding: 13px;
+    border-radius: 10px;
+}
+
+.storename{
+padding: 5px;
+color: #FF3366;
+}
+
+.action{
+    display: flex;
+    justify-content: space-between
+}
+.btn-action{
+    height: 38px;
+    padding: 6px;
+    margin-top: 20px;
+}
+.delete{
+    background-color: #ff0000;
+    color: #fff;
+}
+
+.edit{
+    color: #fff;
+    background-color: orange
+}
+.save{
+    background-color: #FF3366;
+    color: #fff
+
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    color: #FF3366;
+    background-color: #fff;
+    border-color: #dee2e6 #dee2e6 #fff;
+}
+.cards-store{
+    border: 2px solid #FF3366; 
+    border-left: 7px solid #FF3366;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding: 9px;
+    margin-top: 10px;
+    /* box-shadow: 0px 2px 20px #FF3366; */
+}
+.wrap{
+    overflow-x:hidden;
+    height: 300px;
+    padding: 5px;
+}
+.wrap::-webkit-scrollbar{
+    background: none;
+    width: 2px;
+}
+.wrap::-webkit-scrollbar-thumb{
+    width: 2px;
+    background-color: #FF3366; 
+}
+.btn-pink{
+    background-color: #FF3366;
+    color: #fff;
+}
+/* ---------------------------------------------------------------------- */
+
+.food-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+/* .pb-xlg {
+    padding-bottom: 30px !important;
+} */
+/* .food-menu img {
+    float: left;
+    margin: 0 25px 0 0;
+    max-width: 68px;
+} */
+.food-menu h3 {
+    font-size: 24px;
+    padding: 7px 0 4px 0px;
+    margin: 0;
+    text-transform: none;
+    font-family: Georgia, serif;
+    font-style: italic;
+}
+.food-menu h3 em {
+    font-size: 16px;
+}
+.food-menu p span {
+    background: #ffc107;
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    padding:2px
+}
+.food-menu p:before {
+    border-bottom: 2px dotted #ddd;
+    content: "";
+    height: 1px;
+    left: 0%;
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    z-index: 1;
+}
+.food-menu p {
+    font-size: 1.3em;
+    font-family: Georgia, serif;
+    font-style: italic;
+    /* margin: 0 0 0 95px; */
+    position: relative;
+    display: block;
+}
+
+.food-menu .food-menu-price {
+    background: #fff;
+    display: inline-block;
+    float: right;
+    font-size: 22px;
+    margin-top: -26px;
+    padding: 0 0 0 10px;
+    position: relative;
+    z-index: 3;
+}
+/* @media (max-width: 991px) */
+/* demo-corporate-…aurant.css:170 */
+.food-menu .food-menu-price {
+    margin-top: -20px;
+}
+.specials{
+    height: 300px;
+    overflow-x: hidden;
+}
+.specials::-webkit-scrollbar{
+    background: none;
+    width: 2px;
+}
+.specials::-webkit-scrollbar-thumb{
+    width: 2px;
+    background-color: #ffc107; 
+}
+/* .tableNumber{
+  
+} */
+.available{
+      font-size: 25px;
+    float: right;
+}

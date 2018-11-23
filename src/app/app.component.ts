@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (this.auth.user$) {
+    if (!this.auth.user$) {
       console.log('not logged in');
 
       if (this.auth.userExist()) {

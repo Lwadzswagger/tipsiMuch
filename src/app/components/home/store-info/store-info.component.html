@@ -1,127 +1,212 @@
-<div class="btn btn-block btn-primary"><i class="far fa-edit"></i> Edit store</div>
-<div  type="button" data-toggle="modal" data-target="#myModal" class="btn btn-block btn-danger"> <i class="fas fa-trash-alt"></i> Delete store</div>
+<div class="wrapper">
+  <h3 class="storename" *ngIf="this.auth.user$">{{selectedstor.storeProfile.name}}</h3>
+  <p>A Store by: {{selectedstor.storeOwner}}</p>
+  <p class="des">{{selectedstor.slogan}}</p>
+  <div class="location"> <i class="fas fa-map-marker-alt"></i> {{selectedstor.location}}</div>
 
-<h3>{{selectedstor.storeProfile.name}}</h3>
+  <div class="action">
+      <div *ngIf="!editing && auth.user$ | async as user "  type="button" class="btn edit btn-action">
+          <i class="far fa-edit"></i> Edit store</div>
+          <div *ngIf="editing" type="button" class="btn cancel btn-action">
+              <i *ngIf="editing" class="fas fa-ban"></i> Cancel store</div>
+              <div type="button" *ngIf="editing"  class="btn save btn-action">
+                  <i class="far fa-save"></i> Save store</div>  
+    <div  *ngIf="!editing && auth.user$ | async as user " type="button" data-toggle="modal" data-target="#myModal" class=" btn delete btn-action">
+       <i class="fas fa-trash-alt"></i>
+      Delete store</div>
+  </div>
+</div>
 
-<p>{{selectedstor.slogan}}</p>
 
-<div class="location"> <i class="fas fa-map-marker-alt"></i> {{selectedstor.location}}</div>
-<p>Store owner: {{selectedstor.storeOwner}}</p>
 <div class="fdfdfdfdf">
-        <!-- <h2>Toggleable Tabs</h2> -->
-        <br>
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#home">Tables</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#menu1">Menu</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#menu2">Specials</a>
-          </li>
-        </ul>
-      
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <div id="home" class="container tab-pane active"><br>
-            <div class="btn btn-primary btn-block"><i class="fas fa-couch"></i> 
-              Add more tables</div>
-            <h3>available tables are:</h3>
-            <br>
-         <div class="row">
-           <span class="btn btn-success">Available</span>
-           <span class="btn btn-warning">Reserved</span>
-           <span class="btn btn-success">Available</span>
-           <span class="btn btn-warning">Reserved</span>
-           <span class="btn btn-success">Available</span>
-           <span class="btn btn-warning">Reserved</span>
-           <span class="btn btn-success">Available</span>
-           <span class="btn btn-success">Available</span>
-           <span class="btn btn-success">Available</span>
-           <span class="btn btn-success">Available</span>
-           <span class="btn btn-success">Available</span>
-           <span class="btn btn-success">Available</span>
-           <span class="btn btn-success">Available</span>
+  <!-- <h2>Toggleable Tabs</h2> -->
+  <br>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#home">Tables</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#menu1">Menu</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#menu2">Specials</a>
+    </li>
+  </ul>
 
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div id="home" class="container tab-pane active"><br>
+    
+      <!-- <h3>available tables are:</h3> -->
+      <!-- <br> -->
+      <div class="column small-12 large-2" >
+          <!-- <label class="sbw_light">Tables:</label><br /> -->
+         
+        
+           <div class="wrap">
+                  <div class="cards-store">
+              <span class="available">Available Yes</span><br>
+              <span class="tableNumber">Table number 5</span><br>
+              <span class="seats">Seats on this table 4</span><br>
+              <span class="people">People on this table:<br>none</span><br>
+              <span class="position">Its an OutDoor table</span><br>
+            <div  data-toggle="modal" data-target="#myModal1"  class="join-table btn btn-primary"><i class="fas fa-plus-circle"></i> Join table</div>
+            <!-- <span>{{table.name}}</span> -->
          </div>
-            <br>
-          </div>
-          <div id="menu1" class="container tab-pane fade"><br>
-        <div  class="timeline-item">
-              <div class="animated-background">
-                  <div class="background-masker header-top"></div>
-                  <div class="background-masker header-left"></div>
-                  <div class="background-masker header-right"></div>
-                  <div class="background-masker header-bottom"></div>
-                  <div class="background-masker subheader-left"></div>
-                  <div class="background-masker subheader-right"></div>
-                  <div class="background-masker subheader-bottom"></div>
-                  <div class="background-masker content-top"></div>
-                  <div class="background-masker content-first-end"></div>
-                  <div class="background-masker content-second-line"></div>
-                  <div class="background-masker content-second-end"></div>
-                  <div class="background-masker content-third-line"></div>
-                  <div class="background-masker content-third-end"></div>
-              </div>
-            </div>  </div>
-          <div id="menu2" class="container tab-pane fade"><br>
-            <h3>Happy Hour at: 2</h3>
+         <div class="cards-store"  *ngFor="let table of tables; index as i">
+                <span class="available">Available {{table.avail}}</span><br>
+                <span class="tableNumber">Table number {{i + 1}}</span><br>
+                <span class="seats">Seats on this table {{table.seats}}</span><br>
+                <span class="people">People on this table:<br> {{table.name}}</span><br>
+                <span class="position">Its an {{table.position}} table</span><br>
+              <div  data-toggle="modal" data-target="#myModal1"  class="join-table btn btn-primary"><i class="fas fa-plus-circle"></i> Join table</div>
+              <!-- <span>{{table.name}}</span> -->
+           </div>
+       
+           </div>
 
-              </div>
-        </div>
+            <div class="btn btn-pink btn-block"><i class="fas fa-couch"></i>
+        Add more tables</div>
       </div>
       <br>
-      <h3>Reviews</h3>
-      <div class="reviews">
-        <div  class="timeline-item">
-          <div class="animated-background">
-              <div class="background-masker header-top"></div>
-              <div class="background-masker header-left"></div>
-              <div class="background-masker header-right"></div>
-              <div class="background-masker header-bottom"></div>
-              <div class="background-masker subheader-left"></div>
-              <div class="background-masker subheader-right"></div>
-              <div class="background-masker subheader-bottom"></div>
-              <div class="background-masker content-top"></div>
-              <div class="background-masker content-first-end"></div>
-              <div class="background-masker content-second-line"></div>
-              <div class="background-masker content-second-end"></div>
-              <div class="background-masker content-third-line"></div>
-              <div class="background-masker content-third-end"></div>
-          </div>
-        </div> 
-      </div>
-      <div class="btn btn-primary btn-block"> <i class="far fa-star"></i> Add Review</div>
-      
-
-       <!-- Button to Open the Modal -->
-  <!-- <button>    Open modal  </button> -->
-
-  <!-- The Modal -->
-  <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Delete Store</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <div id="menu1" class="container tab-pane fade"><br>
+      <div class="timeline-item">
+        <div class="animated-background">
+          <div class="background-masker header-top"></div>
+          <div class="background-masker header-left"></div>
+          <div class="background-masker header-right"></div>
+          <div class="background-masker header-bottom"></div>
+          <div class="background-masker subheader-left"></div>
+          <div class="background-masker subheader-right"></div>
+          <div class="background-masker subheader-bottom"></div>
+          <div class="background-masker content-top"></div>
+          <div class="background-masker content-first-end"></div>
+          <div class="background-masker content-second-line"></div>
+          <div class="background-masker content-second-end"></div>
+          <div class="background-masker content-third-line"></div>
+          <div class="background-masker content-third-end"></div>
         </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-         <p>You are about tot Delete you store and all related information... <br> <b>Are you Sure?</b> </p>
+      </div>
+      <!-- <div class="btn btn-block btn-primary">add menu</div>
+      <input type="text" [(ngModel)]="name " placeholder="Item name" name="something" id="">
+      <input type="text" [(ngModel)]="price"placeholder="Item price" name="something" id="">
+      <input type="text" [(ngModel)]="des" placeholder="Item description" name="something" id="">
+      <div class="btn btn-block btn-primary" (click)="sendMenuItem()">add Send it</div>
+    -->
+
+    </div>
+    <div id="menu2" class="container tab-pane fade"><br>
+   <div class="specials">
+      <ul class="food-menu pbb-xlg">
+          <li>
+            <h3>Spinach Dip & Chips <em>Special</em></h3>
+            <p><span>spinach soufflé, cream cheese, ½ cup Parmesan cheese, mayonnaise and 2 tablespoons green onion in a medium bowl</span></p>
+            <strong class="food-menu-price text-color-dark">R299</strong>
+          </li>
+          <li>
+            <h3>Coconut Shrimp <em>Special</em></h3>
+            <p><span>In medium bowl, combine egg, 1/2 cup flour, beer and baking powder. Place 1/4 cup flour and coconut in two separate bowls.</span></p>
+            <strong class="food-menu-price text-color-dark">R349</strong>
+          </li>
+          <li>
+            <h3>Chicken Quesadilla <em>Special</em></h3>
+            <p><span>A combination of Island favorites. Jamaican chicken wings, crispy coconut shrimp, onion rings and conch fritters. Served with citrus-mustard, jerk BBQ sauce and ...</span></p>
+            <strong class="food-menu-price text-color-dark">R124</strong>
+          </li>
+          <li>
+            <h3>Beef Empanadas <em>Special</em></h3>
+            <p><span>Heat the butter in a large frying pan, add the diced onions and crushed garlic. Cook until the onions are soft.</span></p>
+            <strong class="food-menu-price text-color-dark">R439</strong>
+          </li>
+          <li>
+            <h3>Buttermilk Chicken Jibaritos <em>Special</em></h3>
+            <p><span>tender shrimp, with onions, sweet peppers, spinach and our three cheese blend. Griddled and served with tomato salsa and sour cream..</span></p>
+            <strong class="food-menu-price text-color-dark">R895</strong>
+          </li>
+        </ul>
+
+   </div>
+
+    </div>
+  </div>
+</div>
+
+<br>
+<h3>Reviews</h3>
+<div class="reviews">
+  <div class="timeline-item">
+    <div class="animated-background">
+      <div class="background-masker header-top"></div>
+      <div class="background-masker header-left"></div>
+      <div class="background-masker header-right"></div>
+      <div class="background-masker header-bottom"></div>
+      <div class="background-masker subheader-left"></div>
+      <div class="background-masker subheader-right"></div>
+      <div class="background-masker subheader-bottom"></div>
+      <div class="background-masker content-top"></div>
+      <div class="background-masker content-first-end"></div>
+      <div class="background-masker content-second-line"></div>
+      <div class="background-masker content-second-end"></div>
+      <div class="background-masker content-third-line"></div>
+      <div class="background-masker content-third-end"></div>
+    </div>
+  </div>
+</div>
+<div class="btn btn-primary btn-block"> <i class="far fa-star"></i> Add Review</div>
+
+
+<!-- Button to Open the Modal -->
+<!-- <button>    Open modal  </button> -->
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Delete Store</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <p>You are about to <b>Delete</b> your store and all related information... <br> <b>Are you Sure?</b> </p>
         <div (click)="deleteStore(true)" data-dismiss="modal" class="btn btn-success btn-block">YES</div>
         <div (click)="deleteStore(false)" data-dismiss="modal" class="btn btn-danger btn-block">NO</div>
-        </div>
-        
-        <!-- Modal footer -->
-        <!-- <div class="modal-footer">
+      </div>
+
+      <!-- Modal footer -->
+      <!-- <div class="modal-footer">
           <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
         </div> -->
-        
+
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="myModal1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Join Table</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          <h1> <b>Unfortunately this table is full</b> try another one</h1>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+  
       </div>
     </div>
   </div>

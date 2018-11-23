@@ -4,6 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from 'angularfire2/firestore';
 import * as firebase from 'firebase/app';
+import { CacheService } from './cache.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +14,16 @@ import * as firebase from 'firebase/app';
 export class AuthService {
   public user$: Observable<firebase.User>;
 
-  User = {
+    User = {
     displayName: '',
     uid: '',
     email: '',
     avatar: '',
     hasAStore: false,
     nickname: '',
-    notification: new Array()
+    notification: new Array(),
+    tables: '',
+    history: new Array()
   };
 
   firestoreUsersRef;
@@ -30,11 +33,12 @@ export class AuthService {
 
     public afAuth: AngularFireAuth,
     public router: Router,
+    public cache: CacheService,
     private afs: AngularFirestore,
     private route: ActivatedRoute,
   ) {
     this.user$ = afAuth.authState;
-    this.firestoreUsersRef = this.afs.collection('users').valueChanges();
+    // this.firestoreUsersRef = this.afs.collection('users').valueChanges();
     this.firestoreUser = this.afs.collection('users');
   }
 
@@ -42,8 +46,19 @@ export class AuthService {
     this.afAuth.auth
       .signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then(() => {
-        console.log(this.getcurrentUser());
-        this.router.navigate(['/']);
+
+        this.cache.currentUser = this.getDBCurrentUser().subscribe(res => {
+          this.cache.currentUser = res;
+          localStorage.setItem('currentuser', JSON.stringify(res));
+        });
+        // this.userExist();
+    //  if (this.userExist()) {
+      //  console.log(this.getcurrentUser().uid);
+      //  console.log('user does not exist');
+    //  } else {
+    // console.log('user exist');
+    // }
+        // this.router.navigate(['/']);
       })
       .catch(error => this.handleError(error));
 
@@ -54,15 +69,29 @@ export class AuthService {
   }
 
   userExist() {
-
-    if (this.firestoreUser.doc(this.getcurrentUser().uid) === undefined) {
-      return false;
-    } else {
-      return true;
-    }
+  const usersRef = this.firestoreUser.doc(this.getcurrentUser().uid) ;
+       return usersRef.get()
+        .subscribe((docSnapshot) => {
+          if (docSnapshot.exists) {
+            usersRef.onSnapshot((doc) => {
+              doc.data();
+            });
+          } else {
+             console.log('user does not exist ');
+            // usersRef.set({...}) // create the document
+          }
+      });
   }
 
-  newUser(nickname) {
+updateUserHasAstore() {
+  this.firestoreUser.doc(this.getcurrentUser().uid).update({hasAStore: true}).then(function (docRef) {
+    console.log('User updated!');
+  })
+  .catch(function (error) {
+    console.error('Error updating userData: ', error);
+  });
+}
+newUser(nickname) {
     this.User.avatar = this.getcurrentUser().photoURL;
     this.User.displayName = this.getcurrentUser().displayName;
     this.User.email = this.getcurrentUser().email;
@@ -81,7 +110,7 @@ export class AuthService {
 
   isLoggedIn() {
     const visitor = firebase.auth().currentUser;
-    console.log(firebase.auth().currentUser);
+    // console.log(firebase.auth().currentUser);
     if (visitor === null) {
       return true;
     } else {
@@ -95,5 +124,9 @@ export class AuthService {
 
   getcurrentUser() {
     return firebase.auth().currentUser;
+  }
+
+  getDBCurrentUser() {
+    return this.firestoreUser.doc(this.afAuth.auth.currentUser.uid).valueChanges();
   }
 }

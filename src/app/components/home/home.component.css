@@ -1,31 +1,34 @@
 @import url('https://fonts.googleapis.com/css?family=Muli');
 .header{
-   background-image: url('https://c1.staticflickr.com/8/7459/11536816066_d1acaf5579_b.jpg');
+   background-image: url('https://c1.staticflickr.com/8/7459/11536816066_d1acaf5579_b.jpg') ;
    width: 100%;
-   height: 300px;
-   border-radius: 5px;
+   height: 50vh;
+   border-radius: 0 5px;
    background-size: cover;
-    }
+   background-repeat: no-repeat;
+   background-position: 5%;
+   padding: 0 !important;
+   display: flex;
+   opacity: .8;
+   background-color: #000000 !important;
+}
    
 .wrapper{
    background-color:#f0e2eeb0;
+   padding: 0;
 }
-.checkoutStore{
-    position: absolute;
-    top: 50%;
-    left: 50%;
+.checkoutStore{ 
     border: #FF3366;
     background-color:  #FF3366;
     color: #ffffff;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
-}
-/* .card-image{
-    height: auto;
-
-} */
+    margin: auto;
+} 
 .storeContent{
     display: flex;    
+}
+.card-action{
+    color: #0a5df9f2;
+    cursor: pointer;
 }
 .storeCard{
     padding: 5px;
@@ -35,6 +38,10 @@
     border: 2px solid #FF3366;
     border-radius: 5px;
 }
+.container{
+    
+    max-width: 768px !important;
+}
 .head{
     color: #FF3366;
     font-family: 'Muli', sans-serif;
@@ -42,7 +49,7 @@
 
 .img{
     height: 133px;
-    width: 160px;
+    width: 160px; 
     }
 
 
@@ -82,7 +89,7 @@
 .timeline-item {
     background-color: #fff;
     border: 1px solid;
-    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    border-color: #FF3366 #FF3366 #FF3366;
     border-radius: 3px;
     padding: 12px;
   

@@ -1,12 +1,14 @@
-<h1>Hi USER, how would you like us to call you?</h1>
-<p>Its about ttime we get to know you more</p>
-<form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Nickname</label>
-    <input [(ngModel)]="userData" type="email" name="nickname"  class="col-xs-4 form-control" id="nicknameInput" 
-  placeholder="Enter Nickname">
-
-  </div>
-
-  <button type="submit" (click)="user()" class="btn btn-primary">Submit</button>
-</form>
+<div class="wrap">
+    <h3>Hi, how would you like us to call you?</h3>
+    <p>Its about time we get to know you more</p>
+    <form>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Nickname</label>
+        <input [(ngModel)]="userData" type="email" name="nickname"  class="col-xs-4 form-control" id="nicknameInput" 
+      placeholder="Enter Nickname">
+    
+      </div>
+    
+      <button type="submit" (click)="user()" class="btn btn-primary">Submit</button>
+    </form>
+</div>

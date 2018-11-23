@@ -17,20 +17,20 @@ export class StepOneComponent implements OnInit {
 
 
 
-  newStore: Store
+  newStore: Store;
   storePicture: any;
-validated= true;
-  storePicUrl = "";
+validated = true;
+  storePicUrl = '';
 
-  storeProfileName = "";
-
-
-  slogan = "";
+  storeProfileName = '';
 
 
-  location = "";
+  slogan = '';
 
-  establishmentType = "";
+
+  location = '';
+
+  establishmentType = '';
 
 
 
@@ -42,7 +42,7 @@ validated= true;
 
   ngOnInit() {
 
-this.validate()
+this.validate();
 
 
 
@@ -63,17 +63,17 @@ this.validate()
   }
 
 
-  validate(){
+  validate() {
     if (this.slogan === '' || this.establishmentType === '') {
-      this.validated = false
+      this.validated = false;
     } else {
-      this.validated = true
-      
+      this.validated = true;
+
     }
   }
 
   profileDetect(event: any) {
-    const file = (event.target as HTMLInputElement).files
+    const file = (event.target as HTMLInputElement).files;
     if (file && file.length === 1) {
       this.storePicture = new UploadFiles(file.item(0));
       this.filePreview(event, 'store-pics');
@@ -89,18 +89,18 @@ this.validate()
   }
 
   filePreview(event: any, fileType: string) {
-    var reader = new FileReader();
-    console.log('filetype', fileType)
+    const reader = new FileReader();
+    console.log('filetype', fileType);
 
     reader.onload = (event: any) => {
       switch (fileType) {
-        case "store-pics": this.storePicUrl = event.target.result;
+        case 'store-pics': this.storePicUrl = event.target.result;
           break;
         default:
           break;
       }
 
-    }
+    };
 
     reader.readAsDataURL(event.target.files[0]);
   }
@@ -111,7 +111,7 @@ this.validate()
     this.addStore.store.location = this.location;
     // this.addStore.store.storeOwner = this.location;
     this.addStore.store.establishmentType = this.establishmentType;
-    this.addStore.step++
+    this.addStore.step++;
   }
 
 }

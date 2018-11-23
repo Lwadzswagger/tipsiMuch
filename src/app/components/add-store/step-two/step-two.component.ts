@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AddStoreService } from 'src/app/services/add-store.service';
 import { Router } from '@angular/router';
+import { CacheService } from 'src/app/services/cache.service';
 
 @Component({
   selector: 'app-step-two',
@@ -10,21 +11,22 @@ import { Router } from '@angular/router';
 export class StepTwoComponent implements OnInit {
 
   adder = true;
-  storeProfileCellNumber = "";
-  contactName = ""
-  contactPosition = ""
+  storeProfileCellNumber = '';
+  contactName = '';
+  contactPosition = '';
   makeReservations ;
-  
+
   floorSet = {
-    capacity:1,
-    seatsType:''
-  }
+    capacity: 1,
+    seatsType: ''
+  };
   reviewsRatings = null;
 
 
   constructor(
     private addStore: AddStoreService,
     private router: Router,
+    private cache: CacheService,
      ) { }
 
   ngOnInit() {
@@ -38,14 +40,14 @@ export class StepTwoComponent implements OnInit {
 
     console.log(this.addStore.store);
     this.addStore.registerStore(this.addStore.store);
-    this.router.navigate(['/'])
+    this.router.navigateByUrl('/', { skipLocationChange: true });
     }
-  addSet() {       
-    this.addStore.store.floorSetting.push(this.floorSet)
+  addSet() {
+    this.addStore.store.floorSetting.push(this.floorSet);
     this.adder = false;
   }
-  reservations(val){
-    // console.log(val);    
+  reservations(val) {
+    // console.log(val);
     this.makeReservations = val;
   }
 
@@ -55,9 +57,9 @@ export class StepTwoComponent implements OnInit {
   minus() {
     this.floorSet.capacity = --this.floorSet.capacity;
   }
-  back(){
+  back() {
   this.addStore.step = 1;
-  
+
   }
-  
+
 }

@@ -56,20 +56,21 @@ export class AddStoreService {
   }
   deleteStore(givenStore) {
     this.storeCollectionRef.doc(givenStore).delete().then(function () {
-      console.log('Document successfully deleted!');
+      console.log('Store successfully deleted!');
     }).catch(function (error) {
       console.error('Error removing document: ', error);
     });
   }
 
   registerStore(store: Store) {
+    this.auth.updateUserHasAstore();
     this.store = store;
     this.store.storeOwner = this.auth.getcurrentUser().displayName;
     this.storeCollectionRef
       .doc(this.store.storeProfile.name)
       .set(Object.assign({}, this.store))
       .then(function (docRef) {
-        console.log('store registered!');
+        console.log('store registered successfully!');
       })
       .catch(function (error) {
         console.error('Error adding store: ', error);

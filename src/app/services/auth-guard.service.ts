@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map } from "rxjs/operators";
+import { map } from 'rxjs/operators';
 
 import { Router } from '@angular/router';
 import { RouterStateSnapshot } from '@angular/router/src/router_state';
@@ -18,7 +18,7 @@ export class AuthGuardService {
   canActivate(state: RouterStateSnapshot) {
 return this.authservice.user$.pipe(map(user => {
 if (user) {return true;
-}else {
+} else {
   this.router.navigate(['/sign-in'],
   //  {queryParams: {returnUrl: state.url}  }
     ) ;
@@ -26,7 +26,7 @@ if (user) {return true;
 }));
  }
 
- 
+
 
 
 
