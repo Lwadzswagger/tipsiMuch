@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import { AgmCoreModule } from '@agm/core';
+import { GeofireService } from '../../services/geofire.service';
+
 
 
 @Component({
@@ -10,11 +12,15 @@ import { Component, OnInit } from '@angular/core';
 export class GooglemapsComponent implements OnInit {
   lat: number;
   lng: number;
+  markers: any;
 
-  constructor() { }
+
+  constructor(public geo: GeofireService) { }
 
   ngOnInit() {
     this.getUserLocation();
+    this.geo.hits
+      .subscribe(hits => (this.markers = hits));
   }
 
   private getUserLocation() {
@@ -22,7 +28,7 @@ export class GooglemapsComponent implements OnInit {
       navigator.geolocation.getCurrentPosition(position => {
         this.lat = position.coords.latitude;
         this.lng = position.coords.longitude;
-        console.log(this.lat, this.lng);
+        this.geo.getLocation(500, [this.lat, this.lng]);
       });
     }
   }

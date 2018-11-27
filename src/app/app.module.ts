@@ -40,7 +40,8 @@ import { GooglemapsComponent } from './components/googlemaps/googlemaps.componen
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyC39tp6z16f4X3XPPuLX7HZZSvWPLBp0Mg'
+      // mindingmybiz
+      // apiKey: 'AIzaSyAu4jOsrSNvK-zWKatp0i_GTjoLhrFevr4'
     }),
     AngularFireAuthModule,
     AngularFireDatabaseModule,

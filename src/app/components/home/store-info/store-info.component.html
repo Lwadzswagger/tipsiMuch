@@ -5,13 +5,13 @@
   <div class="location"> <i class="fas fa-map-marker-alt"></i> {{selectedstor.location}}</div>
 
   <div class="action">
-      <div *ngIf="!editing && auth.user$ | async as user "  type="button" class="btn edit btn-action">
+      <div *ngIf="auth.user$ | async as user "  type="button" class="btn edit btn-action">
           <i class="far fa-edit"></i> Edit store</div>
           <div *ngIf="editing" type="button" class="btn cancel btn-action">
               <i *ngIf="editing" class="fas fa-ban"></i> Cancel store</div>
               <div type="button" *ngIf="editing"  class="btn save btn-action">
                   <i class="far fa-save"></i> Save store</div>  
-    <div  *ngIf="!editing && auth.user$ | async as user " type="button" data-toggle="modal" data-target="#myModal" class=" btn delete btn-action">
+    <div  *ngIf="auth.user$ | async as user " type="button" data-toggle="modal" data-target="#myModal" class=" btn delete btn-action">
        <i class="fas fa-trash-alt"></i>
       Delete store</div>
   </div>

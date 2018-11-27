@@ -106,6 +106,7 @@ newUser(nickname) {
       .catch(function (error) {
         console.error('Error adding store: ', error);
       });
+      this.router.navigateByUrl('/');
   }
 
   isLoggedIn() {
