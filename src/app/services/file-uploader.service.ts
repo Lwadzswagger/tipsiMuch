@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { UploadFiles } from 'src/app/models/uploadFiles.model'
+import { UploadFiles } from 'src/app/models/uploadFiles.model';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabase } from 'angularfire2/database';
-import * as firebase from 'firebase'
+import * as firebase from 'firebase/app';
 // import { AuthService } from './auth-service.service';
 import { Observable } from 'rxjs';
 import { AddStoreService } from './add-store.service';
@@ -14,47 +14,47 @@ import { AddStoreService } from './add-store.service';
 export class FileUploaderService {
 
   constructor(
-    private af: AngularFireModule, 
-    private addstoreService: AddStoreService, 
+    private af: AngularFireModule,
+    private addstoreService: AddStoreService,
 
-     ) { }
+  ) { }
 
-  private  uploads: Observable<UploadFiles[]>;
+  private uploads: Observable<UploadFiles[]>;
   private uploadTask: firebase.storage.UploadTask;
 
-  pushUpload(upload: UploadFiles, basepath: string, storeName:string) {
+  pushUpload(upload: UploadFiles, basepath: string, storeName: string) {
 
     const storageRef = firebase.storage().ref();
     const uploadTask = storageRef.child(`${basepath}/${storeName}/${upload.file.name}`).put(upload.file);
 
     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
       (snapshot: any) => {
-        //upload in progress
-        upload.progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        // upload in progress
+        upload.progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
       },
       (error) => {
-        //upload failed
+        // upload failed
         console.error('upload just failed', error);
       },
       () => {
-        //upload success
-         if (uploadTask.snapshot.ref.getDownloadURL()){
-         uploadTask.snapshot.ref.getDownloadURL().then((url)=>{
-           this.addstoreService.store.storeProfile.avatarUrl = url ;      
-        });
-        upload.name = upload.file.name;
+        // upload success
+        if (uploadTask.snapshot.ref.getDownloadURL()) {
+          uploadTask.snapshot.ref.getDownloadURL().then((url) => {
+            this.addstoreService.store.storeProfile.avatarUrl = url;
+          });
+          upload.name = upload.file.name;
 
-        // this.saveFileData(upload, `${basepath}/${storeName}`);
-        // console.log('download url for pic ',upload.url);
-        // console.log('file name',upload.name);
-        
-        console.log('File uploaded');
-        return;
-      } else {
+          // this.saveFileData(upload, `${basepath}/${storeName}`);
+          // console.log('download url for pic ',upload.url);
+          // console.log('file name',upload.name);
+
+          console.log('File uploaded');
+          return;
+        } else {
           console.error('No download URL!');
         }
-      }, )
+      });
   }
- 
-  
+
+
 }

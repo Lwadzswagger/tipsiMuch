@@ -21,6 +21,7 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { StoreInfoComponent } from './components/home/store-info/store-info.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { GooglemapsComponent } from './components/googlemaps/googlemaps.component';
+import { BannerComponent } from './components/ads/banner.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { GooglemapsComponent } from './components/googlemaps/googlemaps.componen
     AddStoreComponent,
     StepOneComponent,
     StepTwoComponent,
+    BannerComponent,
     SignInComponent,
     StoreInfoComponent,
     UserProfileComponent,

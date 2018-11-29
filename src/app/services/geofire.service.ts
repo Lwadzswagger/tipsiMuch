@@ -19,7 +19,7 @@ export class GeofireService {
 
   constructor(protected db: AngularFireDatabase) {
     this.dbRef = this.db.list('/locations');
-    this.geoFire = new GeoFire(this.dbRef.$ref);
+    this.geoFire = new GeoFire(this.dbRef.query.ref);
 
   }
 
